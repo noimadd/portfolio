@@ -19,7 +19,7 @@ app.set('trust proxy', 1);
 
 // pages
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('main');
 });
 
 // start server
