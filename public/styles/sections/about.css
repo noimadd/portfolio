@@ -18,6 +18,14 @@
     position: relative;
 }
 
+.attributes hr {
+    border: none;
+    border-top: 1px solid var(--gilded-gold);
+    margin: 20px 0;
+}
+
+
+/* Outer border corners */
 .attributes::before,
 .attributes::after {
     content: '';
@@ -41,6 +49,61 @@
     right: -30px;
     border-width: 0 1px 1px 0;
     border-bottom-right-radius: 16px;
+}
+
+/* Inner card design */
+/* Header */
+.attribute-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.heading p {
+    font-size: 0.8rem;
+    color: var(--gilded-gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.heading h3 {
+    font-size: 1.2rem;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    line-height: 1;
+    right: 0;
+}
+
+#position {
+    background: color-mix(in srgb, var(--gilded-gold) 80%, var(--bg-dark) 30%);
+    border: 1px solid var(--gilded-gold);
+    color: var(--bg-dark);
+    width: fit-content;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+}
+
+#alignment {
+    font-size: 0.7rem;
+    right: 0;
+    color: var(--text-slate);
 }
 
 
