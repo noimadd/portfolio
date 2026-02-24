@@ -148,7 +148,7 @@
 }
 
 .feature + .feature {
-    border-left: 1px solid var(--gilded-gold);
+    border-left: 1px solid color-mix(in srgb, var(--gilded-gold) 60%, transparent);
 }
 
 .feature-title {
