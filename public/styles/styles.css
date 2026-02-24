@@ -125,3 +125,11 @@ body {
 .card h3, .card p {
     margin: 0;
 }
+
+.sub-card {
+    background: color-mix(in srgb, var(--bg) 50%, var(--bg-dark) 50%);
+    border: 1.5px solid var(--helper);
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

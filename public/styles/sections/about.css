@@ -139,11 +139,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: color-mix(in srgb, var(--bg) 50%, var(--bg-dark) 50%);
-    border: 1px solid var(--gilded-gold);
-    border-radius: 4px;
-    padding-top: 5px;
-    padding-bottom: 5px;
 }
 
 .feature {
@@ -167,6 +162,65 @@
     font-size: 0.8rem;
     color: var(--text-slate);
     text-transform: uppercase;
+}
+
+
+
+/* Stats */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+}
+
+.stat {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 12px 7px;
+}
+
+.stat-type {
+    font-size: 0.8rem;
+    color: var(--gilded-gold);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-top: 5px;
+}
+
+/* detail overview on hover */
+.stat-detail {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding: 5px 3px;
+    opacity: 0;
+    pointer-events: none;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    color: var(--text);
+}
+
+.stat-type,
+.stat-value,
+.stat-detail {
+    transition: opacity 0.2s ease;
+}
+
+.stat:hover .stat-type,
+.stat:hover .stat-value {
+    opacity: 0;
+}
+
+.stat:hover .stat-detail {
+    opacity: 1;
+    cursor: pointer;
 }
 
 
