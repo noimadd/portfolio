@@ -14,14 +14,7 @@
 
 /* left hand side */
 .attributes {
-    max-width: 400px;
     position: relative;
-}
-
-.attributes hr {
-    border: none;
-    border-top: 1px solid var(--gilded-gold);
-    margin: 20px 0;
 }
 
 
@@ -54,7 +47,7 @@
 /* Inner card design */
 /* custom hr/lines */
 .custom-line {
-    margin: 25px auto;
+    margin: 20px auto;
     width: 95%;
     display: flex;
     align-items: center;
@@ -72,7 +65,7 @@
 .custom-line p {
     white-space: nowrap;
     text-align: center;
-    padding: 0 20px;
+    padding: 0 15px;
     font-size: 0.8rem;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -115,6 +108,7 @@
     gap: 10px;
     line-height: 1;
     right: 0;
+    font-size: 0.85rem;
 }
 
 #position {
@@ -122,14 +116,11 @@
     border: 1px solid var(--gilded-gold);
     color: var(--bg-dark);
     width: fit-content;
-    padding: 3px 8px;
+    padding: 5px 8px;
     border-radius: 4px;
-    font-size: 0.7rem;
 }
 
 #alignment {
-    font-size: 0.7rem;
-    right: 0;
     color: var(--text-slate);
 }
 
@@ -178,6 +169,7 @@
     overflow: hidden;
     text-align: center;
     padding: 12px 7px;
+    transition: all 0.3s ease;
 }
 
 .stat-type {
@@ -189,7 +181,7 @@
 
 .stat-value {
     font-size: 0.9rem;
-    color: var(--text);
+    color: var(--text-slate);
     margin-top: 5px;
 }
 
@@ -210,7 +202,7 @@
 .stat-type,
 .stat-value,
 .stat-detail {
-    transition: opacity 0.2s ease;
+    transition: opacity 0.3s ease;
 }
 
 .stat:hover .stat-type,
@@ -221,6 +213,106 @@
 .stat:hover .stat-detail {
     opacity: 1;
     cursor: pointer;
+}
+
+.stat:hover {
+    border: 1px solid var(--gilded-gold);
+    transform: scale(1.05);
+}
+
+
+
+/* Skills */
+.skills {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.skill {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.skill-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-dark);
+    padding: 3px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.material-icons {
+    color: var(--gilded-gold);
+    transition: color 0.3s ease;
+}
+
+.skill-info {
+    gap: 10px;
+}
+
+.skill-title {
+    font-size: 0.9rem;
+    color: var(--gilded-gold);
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.skill-description {
+    font-size: 0.75rem;
+    color: var(--text-slate);
+    letter-spacing: 1.5px;
+}
+
+.badge {
+    margin-right: 10px;
+    border: 1px solid var(--gilded-gold);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.primary-badge {
+    background: var(--gilded-gold);
+    color: var(--bg-dark);
+}
+
+.practice-badge {
+    background: color-mix(in srgb, var(--gilded-gold) 80%, var(--bg-dark) 30%);
+    border: 1px solid var(--gilded-gold);
+    color: var(--bg-dark);
+}
+
+.learning-badge {
+    background: transparent;
+    color: var(--gilded-gold);
+}
+
+/* skill card on hover */
+.skill:hover {
+    border: 1px solid var(--gilded-gold);
+    transform: translateY(-3px);
+}
+
+.skill:hover .icon-container {
+    background: var(--gilded-gold);
+}
+
+.skill:hover .material-icons {
+    color: var(--bg-dark);
 }
 
 
