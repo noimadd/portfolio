@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./partials/head', { title: 'Noimad Portfolio' }) %>
+    </head>
+    <body>
+        <%- include('./partials/background') %>
+        <div class="main-layout">
+            <%- include('./menus/topNav') %>
+            <%- include('./partials/socials') %>
+            <%- include('./partials/email') %>
+
+            <div class="content">
+                <%- include('./sections/about') %>
+                <div class="section-gap"></div>
+                <%- include('./sections/featured') %>
+            </div>
+        </div>
+        <script src="/scripts/ui.js"></script>
+    </body>
+</html>
