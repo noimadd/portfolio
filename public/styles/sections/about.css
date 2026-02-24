@@ -14,6 +14,7 @@
 
 /* left hand side */
 .attributes {
+    max-width: 550px;
     position: relative;
 }
 
@@ -313,6 +314,19 @@
 
 .skill:hover .material-icons {
     color: var(--bg-dark);
+}
+
+/* Active Quests */
+.quest {
+    font-size: 0.9rem;
+    color: var(--text-slate);
+    margin-top: 10px;
+}
+
+.active-quest {
+    color: var(--gilded-gold);
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 
