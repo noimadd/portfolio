@@ -1,0 +1,26 @@
+.socials {
+    display: flex;
+    flex-direction: column-reverse;
+    position: fixed;
+    bottom: 20px;
+    left: 5%;
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+}
+
+#vertical-line {
+    width: 1px;
+    height: 80px;
+    background-color: var(--gilded-gold);
+    margin: auto;
+}
+
+.social a {
+    color: var(--gilded-gold);
+    transition: all 0.3s ease;
+}
+
+.social:hover {
+    transform: scale(1.2);
+}

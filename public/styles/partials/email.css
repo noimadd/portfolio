@@ -1,0 +1,34 @@
+.email {
+    display: flex;
+    flex-direction: column-reverse;
+    position: fixed;
+    bottom: 20px;
+    right: 5%;
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+}
+
+#vertical-line {
+    width: 1px;
+    height: 80px;
+    background-color: var(--gilded-gold);
+    margin: auto;
+}
+
+.email-content {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+.email-content a {
+    color: var(--gilded-gold);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.email-content:hover {
+    transform: scale(1.02);
+    text-decoration: underline;
+    color: var(--gilded-gold);
+}
