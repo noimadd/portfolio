@@ -63,6 +63,10 @@ body {
     min-height: 100vh;
 }
 
+.section-gap {
+    height: 15vw;
+}
+
 
 .background {
     position: fixed; 
