@@ -1,12 +1,28 @@
 #about-section {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: minmax(320px, 480px) minmax(320px, 700px);
+    grid-template-areas: "attributes overview";
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    width: 100%;
+    width: 80%;
+    margin: auto;
     margin-top: 40px; /* accounts for top bar */
-    gap: 5%;
+    column-gap: 5%;
+}
+
+@media (max-width: 1024px) {
+    #about-section {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "overview"
+            "attributes";
+        row-gap: 32px;
+        width: 80vw;
+        margin-left: calc(50% - 40vw);
+        margin-right: calc(50% - 40vw);
+        padding-inline: 0;
+    }
 }
 
 
@@ -14,9 +30,20 @@
 
 /* left hand side */
 .attributes {
+    grid-area: attributes;
     max-width: 480px;
     width: 100%;
     position: relative;
+}
+
+@media (max-width: 1024px) {
+    .attributes {
+        width: 100%;
+        max-width: none;
+        margin-top: 0;
+        justify-self: stretch;
+        margin-top: 50px;
+    }
 }
 
 
@@ -338,7 +365,16 @@
 
 /* right hand side */
 .overview {
+    grid-area: overview;
     max-width: 700px;
+}
+
+@media (max-width: 1024px) {
+    .overview {
+        margin-top: 100px;
+        width: 100%;
+        max-width: none;
+    }
 }
 
 #pretitle-text {
