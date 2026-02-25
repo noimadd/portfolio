@@ -101,6 +101,7 @@
 
 .project-container { 
     max-width: 700px;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -154,6 +155,13 @@
     letter-spacing: 1px;
 }
 
+/* overview text */
+.overview-text {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
 /* project stage - top right */
 .project-stage {
     position: absolute;
@@ -164,9 +172,6 @@
     border: 0.5px solid var(--gilded-gold);
     padding: 5px 10px;
     border-radius: 4px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    font-weight: 700;
 }
 
 /* project version - top left */
@@ -178,10 +183,16 @@
     color: var(--bg-dark);
     padding: 5px 10px;
     border-radius: 4px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    font-weight: 700;
 }
+
+@media (max-width: 500px) {
+    .overview-text {
+        font-size: 0.65rem;
+    }
+}
+
+
+
 
 /* project description */
 .project-overview {
@@ -227,7 +238,7 @@
 
 .project-stack-section ul {
     column-count: 2;
-    column-gap: 1.5rem;
+    column-gap: 1.25rem;
     padding-left: 0;
 }
 
@@ -254,6 +265,26 @@
     border-radius: 50%;
     display: inline-block;
 }
+
+@media (max-width: 800px) {
+    .project-overview {
+        margin: 0;
+    }
+    
+    .project-description {
+        flex-direction: column;
+    }
+
+    
+    .project-stack-section {
+        border-left: none;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 500px) {
+}
+
 
 /* button container */
 .button-container {
@@ -315,4 +346,15 @@
     height: 1rem;
     width: 1rem;
     vertical-align: middle;
+}
+
+@media (max-width: 400px) {
+    .button-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .button-container a {
+        font-size: 0.75rem;
+    }
 }
