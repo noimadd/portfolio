@@ -3,6 +3,10 @@
     flex-direction: column;
 }
 
+
+
+
+/* heading */
 .featured-header {
     width: 100%;
     display: flex;
@@ -25,7 +29,7 @@
     flex-direction: row;
 }
 
-#horizontal-line {
+.horizontal-line {
     width: 40px;
     height: 1px;
     background-color: var(--gilded-gold);
@@ -85,4 +89,230 @@
         text-align: left;
         margin-top: 1rem;
     }
+}
+
+
+
+
+/* featured projects */
+.featured-projects {
+    margin-top: 150px;
+}
+
+.project-container { 
+    max-width: 700px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.project-image-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--gilded-gold);
+    border-radius: 8px;
+}
+
+.project-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+/* image text - bottom left */
+.project-title {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.project-title h2 {
+    font-size: 3rem;
+}
+
+.project-type {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-left: 10px;  
+}
+
+.project-type p {
+    font-size: 0.9rem;
+    color: var(--gilded-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* project stage - top right */
+.project-stage {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--bg-dark);
+    color: var(--gilded-gold);
+    border: 0.5px solid var(--gilded-gold);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* project version - top left */
+.project-version {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--gilded-gold);
+    color: var(--bg-dark);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* project description */
+.project-overview {
+    margin: 0 2rem 2rem 2rem;
+}
+
+.project-description {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    border-bottom: 0.5px solid var(--bg);
+    padding-bottom: 1.5rem;
+}
+
+.project-description h3 {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+}
+
+.project-description-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-description-section p {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-left: 0.5rem;
+    line-height: 1.8;
+}
+
+.project-stack-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-left: 1px solid var(--bg);
+    padding-left: 1rem;
+}
+
+.project-stack-section ul {
+    column-count: 2;
+    column-gap: 1.5rem;
+    padding-left: 0;
+}
+
+.project-stack-section li {
+    font-size: 0.9rem;
+    color: var(--gilded-gold);
+    background-color: var(--bg-dark);
+    padding: 5px 10px 5px 22px;
+    border-radius: 4px;
+    list-style-type: none;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.project-stack-section li::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 7px;
+    background: var(--gilded-gold);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* button container */
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.featured-button {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.visit-site {
+    background: var(--gilded-gold);
+    color: var(--bg-dark);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.visit-site:hover {
+    background: var(--aged-parchment);
+    color: var(--bg-dark);
+}
+
+.view-code {
+    background: transparent;
+    color: var(--gilded-gold);
+    border: 2px solid var(--gilded-gold);
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.view-code:hover {
+    background: var(--gilded-gold);
+    color: var(--bg-dark);
+    border-color: var(--gilded-gold);   
+}
+
+.button-container a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.button-container a svg {
+    height: 1rem;
+    width: 1rem;
+    vertical-align: middle;
 }

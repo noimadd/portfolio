@@ -16,7 +16,7 @@
     --accent: oklch(0.72 0.0909 65.53);
     --buttons: oklch(0.4806 0.0581 196.98);
     --shadow: oklch(0.1088 0.0173 285.91);
-    --borders: oklch(0.635 0.0074 286.19);
+    --border: oklch(0.635 0.0074 286.19);
     --menu-bg: oklch(0.1878 0.0113 242.4);
 
     /* game things */
@@ -70,6 +70,10 @@ body {
     min-height: 100vh;
     width: 80%;
     margin: auto;
+}
+
+.section-gap {
+    height: 15vw;
 }
 
 
