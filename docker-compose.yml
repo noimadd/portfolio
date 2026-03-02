@@ -5,9 +5,3 @@ services:
       dockerfile: dockerfile
     ports:
       - "42069:42069"
-    networks:
-      - portfolio-network
-
-networks:
-  portfolio-network:
-    external: false
