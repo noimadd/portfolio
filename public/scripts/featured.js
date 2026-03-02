@@ -89,8 +89,7 @@ const featured_projects = [
 
 // featured projects data, used to generate project cards in the featured section
 
-const num_projects = featured_projects.length; // number of projects, used for clones and dots
-const clones = num_projects * 2; // number of clones to be displayed either side of current cards
+const num_projects = featured_projects.length; // number of projects, used for dots
 
 const carousel = document.getElementById("carousel"); // location to append project cards to
 const dots = document.getElementById("carousel-dots"); // location to append carousel dots to
@@ -164,43 +163,28 @@ function makeCard(project) {
     return newCard;
 }
 
-// creates cards for each project + clones
-for (let i = 0; i < clones; i++) {
-    carousel.appendChild(makeCard(featured_projects[(num_projects - clones + i + num_projects * 100) % num_projects]));
-}
+// creates cards and dots for each project
 for (let i = 0; i < num_projects; i++) {
     carousel.appendChild(makeCard(featured_projects[i]));
 
     const dot = document.createElement("div");
     dot.className = `carousel-dot${i === 0 ? " active" : ""}`;
-    dot.addEventListener("click", () => goTo(clones + i));
+    dot.addEventListener("click", () => goTo(i));
     dots.appendChild(dot);
 }
-for (let i = 0; i < clones; i++) {
-    carousel.appendChild(makeCard(featured_projects[i % num_projects]));
-}
 
-// calculates width of a card + gap
-function cardWidth() {
-    const first = carousel.children[0];
-    if (!first) return 0;
-    const gap = parseFloat(getComputedStyle(carousel).columnGap) || 0;
-    return first.getBoundingClientRect().width + gap;
-}
-
-// calcultes offset
-function centerOffset() {
-    const viewport_width  = carousel.parentElement.getBoundingClientRect().width;
-    const card_width  = carousel.children[0]?.getBoundingClientRect().width ?? 0;
-    return (viewport_width - card_width) / 2;
-}
-
-// calcultes translate x 
+// calculates the translateX needed to centre card at `pos` in the wrapper
 function txFor(pos) {
-    return centerOffset() - pos * cardWidth();
+    const card = carousel.children[pos];
+    if (!card) return 0;
+    const wrapperWidth = carousel.parentElement.offsetWidth;
+    const cardW = card.offsetWidth;
+    // card.offsetLeft is its left edge relative to the carousel at tx=0
+    // we want: tx + card.offsetLeft + cardW/2 = wrapperWidth/2
+    return (wrapperWidth / 2) - (card.offsetLeft + cardW / 2);
 }
 
-let pos = clones; // current position
+let pos = 0; // current position
 let tx  = 0; // how much to translate carousel by
 
 // transform carousel to current position
@@ -212,32 +196,22 @@ function setTransform(currentX, animate = true) {
 
 // updates active dot
 function updateDots() {
-    const active = ((pos - clones) % num_projects + num_projects) % num_projects;
     dots.querySelectorAll(".carousel-dot").forEach((d, i) =>
-        d.classList.toggle("active", i === active)
+        d.classList.toggle("active", i === pos)
     );
+    carousel.querySelectorAll(".card").forEach((card, i) => {
+        card.classList.toggle("active", i === pos);
+    });
 }
 
 // go to new position on dot click
 function goTo(newPos) {
-    pos = newPos;
+    pos = Math.max(0, Math.min(newPos, num_projects - 1)); // clamp to valid range
     setTransform(txFor(pos), true);
     updateDots();
 }
 
-// loop carousel
-carousel.addEventListener("transitionend", () => {
-    carousel.classList.remove("animating");
-    if (pos < clones) {
-        pos += num_projects;
-    } else if (pos >= clones + num_projects) {
-        pos -= num_projects;
-    }
-    setTransform(txFor(pos), false);
-    updateDots();
-});
-
-goTo(pos, false);
+goTo(pos);
 
 // drag/scrolling logic
 let dragging = false; // self explanatory
@@ -261,22 +235,20 @@ carousel.addEventListener("pointermove", e => {
 
 carousel.addEventListener("pointerup", endDrag); // end dragging
 carousel.addEventListener("pointercancel", endDrag); // end drag on mouse error
-carousel.addEventListener("dragstart", e => e.preventDefault()); // prevent drag on iamges
+carousel.addEventListener("dragstart", e => e.preventDefault()); // prevent drag on images
 
 // end dragging and snap to closest card
 function endDrag(e) {
     if (!dragging) return;
     dragging = false;
 
-    const diff  = e.clientX - startX;
-    const width = cardWidth();
-    if (!width) return;
+    const diff = e.clientX - startX;
+    const cardW = carousel.children[0]?.offsetWidth || 0;
+    if (!cardW) return;
 
-    const rawPos = (centerOffset() - tx) / width;
-
-    if      (diff < -(width * 0.2)) goTo(Math.floor(rawPos) + 1);
-    else if (diff >  (width * 0.2)) goTo(Math.ceil(rawPos)  - 1);
-    else                             goTo(Math.round(rawPos));
+    if      (diff < -(cardW * 0.2)) goTo(pos + 1);
+    else if (diff >  (cardW * 0.2)) goTo(pos - 1);
+    else                             goTo(pos);
 }
 
-window.addEventListener("resize", () => goTo(pos, false));
+window.addEventListener("resize", () => goTo(pos));
