@@ -1,3 +1,4 @@
+// featured projects data, used to generate project cards
 const featured_projects = [
     {
         img: "/assets/featured/sheetsync.png",
@@ -85,17 +86,22 @@ const featured_projects = [
         repo: null
     }
 ];
+
 // featured projects data, used to generate project cards in the featured section
 
 const num_projects = featured_projects.length; // number of projects, used for clones and dots
-const project_container = document.getElementById("carousel"); // location to append project cards to
-const dots_container = document.getElementById("carousel-dots"); // location to append carousel dots to
+const clones = num_projects * 2; // number of clones to be displayed either side of current cards
 
+const carousel = document.getElementById("carousel"); // location to append project cards to
+const dots = document.getElementById("carousel-dots"); // location to append carousel dots to
 
-function createProjectCard(project) {
-    console.log(project);
+// generates new project card
+function makeCard(project) {
+    const newCard = document.createElement("div");
+    newCard.className = "card project-container";
+    newCard.id = project.title.toLowerCase();
 
-    return `<div class="card project-container" id="${project.title.toLowerCase()}">
+    newCard.innerHTML = `
         <div class="project-image-container">
             <img src="${project.img}" alt="${project.title} project image" class="project-image">
             <div class="project-title">
@@ -153,17 +159,124 @@ function createProjectCard(project) {
                 </a>
             </div>
         </div>
-    </div>`
+    `;
+
+    return newCard;
 }
-    
-// creates project cards for each project
-featured_projects.forEach(project => {
-    const project_card = createProjectCard(project);
-    project_container.innerHTML += project_card;
+
+// creates cards for each project + clones
+for (let i = 0; i < clones; i++) {
+    carousel.appendChild(makeCard(featured_projects[(num_projects - clones + i + num_projects * 100) % num_projects]));
+}
+for (let i = 0; i < num_projects; i++) {
+    carousel.appendChild(makeCard(featured_projects[i]));
+
+    const dot = document.createElement("div");
+    dot.className = `carousel-dot${i === 0 ? " active" : ""}`;
+    dot.addEventListener("click", () => goTo(clones + i));
+    dots.appendChild(dot);
+}
+for (let i = 0; i < clones; i++) {
+    carousel.appendChild(makeCard(featured_projects[i % num_projects]));
+}
+
+// calculates width of a card + gap
+function cardWidth() {
+    const first = carousel.children[0];
+    if (!first) return 0;
+    const gap = parseFloat(getComputedStyle(carousel).columnGap) || 0;
+    return first.getBoundingClientRect().width + gap;
+}
+
+// calcultes offset
+function centerOffset() {
+    const viewport_width  = carousel.parentElement.getBoundingClientRect().width;
+    const card_width  = carousel.children[0]?.getBoundingClientRect().width ?? 0;
+    return (viewport_width - card_width) / 2;
+}
+
+// calcultes translate x 
+function txFor(pos) {
+    return centerOffset() - pos * cardWidth();
+}
+
+let pos = clones; // current position
+let tx  = 0; // how much to translate carousel by
+
+// transform carousel to current position
+function setTransform(currentX, animate = true) {
+    tx = currentX;
+    carousel.classList.toggle("animating", animate);
+    carousel.style.transform = `translateX(${currentX}px)`;
+}
+
+// updates active dot
+function updateDots() {
+    const active = ((pos - clones) % num_projects + num_projects) % num_projects;
+    dots.querySelectorAll(".carousel-dot").forEach((d, i) =>
+        d.classList.toggle("active", i === active)
+    );
+}
+
+// go to new position on dot click
+function goTo(newPos) {
+    pos = newPos;
+    setTransform(txFor(pos), true);
+    updateDots();
+}
+
+// loop carousel
+carousel.addEventListener("transitionend", () => {
+    carousel.classList.remove("animating");
+    if (pos < clones) {
+        pos += num_projects;
+    } else if (pos >= clones + num_projects) {
+        pos -= num_projects;
+    }
+    setTransform(txFor(pos), false);
+    updateDots();
 });
 
-// creates carousel dots for each project
-for (let index = 0; index < num_projects; index++) {
-    const dot = `<div class="carousel-dot" id="dot-${index}"></div>`;
-    dots_container.innerHTML += dot;
+goTo(pos, false);
+
+// drag/scrolling logic
+let dragging = false; // self explanatory
+let startX = 0; // mouse starting
+let startTx = 0; // starting translate x of carousel
+
+// start dragging
+carousel.addEventListener("pointerdown", e => {
+    dragging = true;
+    startX = e.clientX;
+    startTx = tx;
+    carousel.classList.remove("animating");
+    carousel.setPointerCapture(e.pointerId);
+});
+
+// drag carousel
+carousel.addEventListener("pointermove", e => {
+    if (!dragging) return;
+    setTransform(startTx + (e.clientX - startX), false);
+});
+
+carousel.addEventListener("pointerup", endDrag); // end dragging
+carousel.addEventListener("pointercancel", endDrag); // end drag on mouse error
+carousel.addEventListener("dragstart", e => e.preventDefault()); // prevent drag on iamges
+
+// end dragging and snap to closest card
+function endDrag(e) {
+    if (!dragging) return;
+    dragging = false;
+
+    const diff  = e.clientX - startX;
+    const width = cardWidth();
+    if (!width) return;
+
+    const rawPos = (centerOffset() - tx) / width;
+
+    if      (diff < -(width * 0.2)) goTo(Math.floor(rawPos) + 1);
+    else if (diff >  (width * 0.2)) goTo(Math.ceil(rawPos)  - 1);
+    else                             goTo(Math.round(rawPos));
 }
+
+window.addEventListener("resize", () => goTo(pos, false));
