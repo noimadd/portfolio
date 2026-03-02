@@ -180,8 +180,6 @@ function txFor(pos) {
     if (!card) return 0;
     const wrapperWidth = carousel.parentElement.offsetWidth;
     const cardW = card.offsetWidth;
-    // card.offsetLeft is its left edge relative to the carousel at tx=0
-    // we want: tx + card.offsetLeft + cardW/2 = wrapperWidth/2
     return (wrapperWidth / 2) - (card.offsetLeft + cardW / 2);
 }
 
@@ -222,6 +220,7 @@ let startTx = 0; // starting translate x of carousel
 // start dragging
 carousel.addEventListener("pointerdown", e => {
     if (e.target.closest('a, button')) return; // allows user to click links without interfering with dragging
+    dragging = true;
     startX = e.clientX;
     startTx = tx;
     carousel.classList.remove("animating");
@@ -247,9 +246,13 @@ function endDrag(e) {
     const cardW = carousel.children[0]?.offsetWidth || 0;
     if (!cardW) return;
 
-    if      (diff < -(cardW * 0.2)) goTo(pos + 1);
-    else if (diff >  (cardW * 0.2)) goTo(pos - 1);
-    else                             goTo(pos);
+    if (diff < -(cardW * 0.2)) {
+        goTo(pos + 1);
+    } else if (diff >  (cardW * 0.2)) {
+        goTo(pos - 1);
+    } else {
+        goTo(pos);
+    }
 }
 
 window.addEventListener("resize", () => goTo(pos));
