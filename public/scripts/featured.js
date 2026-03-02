@@ -77,10 +77,11 @@ const featured_projects = [
         version: "0.0.0",
         description:
            `IronPlate is a planned web application designed to provide users with a platform to track their fitness progress, 
-           and access workout plans and nutrition information. The motivation behind this project is to create a application
-           that does not require a subscription, providing myself and others with a free alternative.
-           
-           Development of this prooject has been on hold for some time, but is planned to begin after the completion of SheetSync, either before or after Trial of Realms 2.0 depending on how I feel at the time.`,
+           and access workout plans and nutrition information. I want to create this project so that I can stop paying 
+           for my current fitness app.
+           <br>
+           Development of this project has been on hold for some time, as I continue to find 'better' ways to develop it. 
+           I plan to continue either before or after Trial of Realms 2.0`,
         stack: ["Node.js", "EJS", "Express", "PostgreSQL", "Redis", "Docker"],
         live: null,
         repo: null
@@ -133,7 +134,7 @@ function makeCard(project) {
                 </div>
             </div>
             <div class="button-container">
-                <a href="${project.live}" class="visit-site featured-button">
+                <a href="${project.live}" target="_blank" class="visit-site featured-button">
                     <span>
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
@@ -145,7 +146,7 @@ function makeCard(project) {
                     </span>
                     Visit Site
                 </a>
-                <a href="${project.repo}" class="view-code featured-button">
+                <a href="${project.repo}" target="_blank" class="view-code featured-button">
                     <span>
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
@@ -220,7 +221,7 @@ let startTx = 0; // starting translate x of carousel
 
 // start dragging
 carousel.addEventListener("pointerdown", e => {
-    dragging = true;
+    if (e.target.closest('a, button')) return; // allows user to click links without interfering with dragging
     startX = e.clientX;
     startTx = tx;
     carousel.classList.remove("animating");
