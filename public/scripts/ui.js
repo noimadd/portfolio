@@ -44,6 +44,7 @@ window.onscroll = function() {
 }
 
 // side nav functionality
+// smooth close side nav on link click
 const sideNav = document.querySelectorAll('.off-screen-menu .side-menu-links a');
 sideNav.forEach(link => {
     link.addEventListener('click', function (e) {
