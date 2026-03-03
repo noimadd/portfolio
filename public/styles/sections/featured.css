@@ -192,7 +192,43 @@
     border-radius: 4px;
 }
 
+@media (max-width: 800px) {
+    .project-container {
+        gap: 1rem;
+    }
+
+    .project-title h2 {
+        font-size: 2rem;
+    }
+
+    .project-type p {
+        font-size: 0.8rem;
+    }
+
+    .overview-text {
+        font-size: 0.7rem;
+    }
+}
+
 @media (max-width: 500px) {
+    .project-image-container {
+        border: none;
+    }
+
+    /* .project-image-container img {
+        display: none;
+    } */
+
+    .project-title h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .horizontal-line {
+        width: 20px;
+        margin: auto 0px;
+    }
+
     .overview-text {
         font-size: 0.65rem;
     }
@@ -519,5 +555,5 @@
 
 .carousel-dot.active {
     background: var(--gilded-gold);
-    width: 40px;
+    width: 45px;
 }
