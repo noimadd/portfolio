@@ -23,3 +23,20 @@ menuLinks.forEach(link => {
         }, 500);
     });
 });
+
+// top nav functionality
+let prevScrollpos = window.pageYOffset;
+const nav = document.querySelector('.top-nav');
+
+window.onscroll = function() {
+    let currentScrollPos = window.pageYOffset;
+
+    if (currentScrollPos < 70) {
+        nav.classList.remove('hidden');
+    } else if (prevScrollpos > currentScrollPos) {
+        nav.classList.remove('hidden');
+    } else {
+        nav.classList.add('hidden');
+    }
+    prevScrollpos = currentScrollPos;
+}
