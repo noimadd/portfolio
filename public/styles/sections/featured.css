@@ -106,7 +106,6 @@
 }
 
 .project-container { 
-    min-width: 600px;
     max-width: 700px;
     width: 100%;
     margin: auto;
@@ -119,7 +118,7 @@
 .project-image-container {
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 42.857%; /* 21:9 aspect ratio */
     position: relative;
     overflow: hidden;
     border: 1px solid var(--gilded-gold);
@@ -250,6 +249,18 @@
     column-count: 4;
     column-gap: 1.25rem;
     padding-left: 0;
+}
+
+@media (max-width: 800px) {
+    .project-stack-section ul {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 500px) {
+    .project-stack-section ul {
+        column-count: 2;
+    }
 }
 
 .project-stack-section li {
@@ -412,13 +423,66 @@
     transform: scale(0.95);
     transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    min-width: 800px;
+}
+
+@media (max-width: 1024px) {
+    .carousel .card {
+        min-width: 600px;
+    }
+
+    .carousel {
+        min-height: 750px;
+    }
+}
+
+@media (max-width: 800px) {
+    .carousel .card {
+        min-width: 500px;
+    }
+
+    .carousel {
+        min-height: 700px;
+    }
+}
+
+@media (max-width: 650px) {
+    .carousel .card {
+        min-width: 90%;
+    }
+
+
+}
+
+@media (max-width: 500px) {
+    .carousel .card {
+        min-width: 95%;
+    }
+
+    .featured-projects {
+        mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 5%,
+            black 95%,
+            transparent 100%
+        );
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 5%,
+            black 95%,
+            transparent 100%
+        );
+    }
 }
 
 /* main card */
 .carousel .card.active {
     opacity: 1;
     transform: scale(1);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.8), 0 0 20px rgba(212,175,55,0.08);
+    border: 2px solid var(--gilded-gold);
+    box-shadow: 0 0 20px var(--gilded-gold);
 }
 
 .carousel.animating {

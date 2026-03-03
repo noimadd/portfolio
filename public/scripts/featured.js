@@ -212,24 +212,45 @@ function goTo(newPos) {
 
 goTo(pos);
 
+const drag_deadzone = 20;
+
 // drag/scrolling logic
 let dragging = false; // self explanatory
-let startX = 0; // mouse starting
+let isDraggingActive = false; // whether dragging has passed the deadzone
+let startX = 0; // mouse starting x position
+let startY = 0; // mouse starting y position
 let startTx = 0; // starting translate x of carousel
 
 // start dragging
 carousel.addEventListener("pointerdown", e => {
     if (e.target.closest('a, button')) return; // allows user to click links without interfering with dragging
     dragging = true;
+    isDraggingActive = false;
     startX = e.clientX;
+    startY = e.clientY;
     startTx = tx;
-    carousel.classList.remove("animating");
     carousel.setPointerCapture(e.pointerId);
 });
 
 // drag carousel
 carousel.addEventListener("pointermove", e => {
     if (!dragging) return;
+
+    const diffX = Math.abs(e.clientX - startX);
+    const diffY = Math.abs(e.clientY - startY);
+    
+    if (!isDraggingActive) {
+        if (diffX < drag_deadzone && diffY < drag_deadzone) return; // not enough movement yet
+        
+        if (diffY > diffX) {
+            dragging = false;
+            return;
+        }
+        
+        isDraggingActive = true;
+        carousel.classList.remove("animating");
+    }
+
     setTransform(startTx + (e.clientX - startX), false);
 });
 
@@ -241,6 +262,11 @@ carousel.addEventListener("dragstart", e => e.preventDefault()); // prevent drag
 function endDrag(e) {
     if (!dragging) return;
     dragging = false;
+
+    if (!isDraggingActive) {
+        goTo(pos); 
+        return;
+    }
 
     const diff = e.clientX - startX;
     const cardW = carousel.children[0]?.offsetWidth || 0;
