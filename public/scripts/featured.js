@@ -15,7 +15,7 @@ const featured_projects = [
         repo: "https://github.com/noimadd/sheetsync"
     },
     {
-        img: "/assets/featured/sheetsync.png",
+        img: "/assets/featured/placeholder.png",
         title: "Personal Portfolio",
         type: "Web Application",
         stage: "In Development",
@@ -29,7 +29,7 @@ const featured_projects = [
         repo: "https://github.com/noimadd/portfolio"
     },
     {
-        img: "/assets/featured/sheetsync.png",
+        img: "/assets/featured/placeholder.png",
         title: "Trial of Realms",
         type: "Game",
         stage: "Completed Prototype",
@@ -43,7 +43,7 @@ const featured_projects = [
         repo: "https://github.com/noimadd/trialOfRealms"
     },
     {
-        img: "/assets/featured/sheetsync.png",
+        img: "/assets/featured/placeholder.png",
         title: "SuppSense",
         type: "Web Application",
         stage: "Completed Prototype",
@@ -56,7 +56,7 @@ const featured_projects = [
         repo: "https://github.com/noimadd/samSuppSense"
     },
     {
-        img: "/assets/featured/sheetsync.png",
+        img: "/assets/featured/placeholder.png",
         title: "Trial of Realms 2.0",
         type: "Game",
         stage: "Planned",
@@ -70,7 +70,7 @@ const featured_projects = [
         repo: null
     },
     {
-        img: "/assets/featured/sheetsync.png",
+        img: "/assets/featured/placeholder.png",
         title: "IronPlate",
         type: "Web Application",
         stage: "Planned",
