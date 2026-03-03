@@ -44,4 +44,16 @@ window.onscroll = function() {
 }
 
 // side nav functionality
-const sideNav = document.querySelector('.off-screen-menu');
+const sideNav = document.querySelectorAll('.off-screen-menu .side-menu-links a');
+sideNav.forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        sideMenu.classList.remove('active');
+        offScreenMenu.classList.remove('active');
+
+        setTimeout(() => {
+            window.location.href = link.href;
+        }, 300);
+    });
+});
