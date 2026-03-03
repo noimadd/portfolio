@@ -83,10 +83,6 @@
         align-items: center;
     }
 
-    #horizontal-line {
-        display: none;
-    }
-
     #title-featured {
         font-size: 3rem;
     }

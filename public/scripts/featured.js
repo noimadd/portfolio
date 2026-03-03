@@ -39,7 +39,7 @@ const featured_projects = [
             It features a simple combat system, and a variety of items, zones, and enemies to encounter, alongside
             a shop and a basic inventory system.`,
         stack: ["Python"],
-        live: null,
+        live: '',
         repo: "https://github.com/noimadd/trialOfRealms"
     },
     {
@@ -52,7 +52,7 @@ const featured_projects = [
            `SuppSense was developed as a part of a group university project, and is a web application designed to provide users with a 
             platform to learn about the ingredients in their supplements, and make informed decisions about their health.`,
         stack: ["Node.js", "Express", "MySQL"],
-        live: "https://suppsense.noimad.dev",
+        live: "",
         repo: "https://github.com/noimadd/samSuppSense"
     },
     {
@@ -66,8 +66,8 @@ const featured_projects = [
             with a focus on developing a user interface, alongside improving the combat system, skills, and items,
             while also adding new content. Development of this project is planned to begin after the completion of SheetSync.`,
         stack: ["Node.js", "EJS", "Express", "Socket.io", "PostgreSQL", "Redis", "Docker"],
-        live: null,
-        repo: null
+        live: '',
+        repo: ''
     },
     {
         img: "/assets/featured/placeholder.png",
@@ -83,8 +83,8 @@ const featured_projects = [
            Development of this project has been on hold for some time, as I continue to find 'better' ways to develop it. 
            I plan to continue either before or after Trial of Realms 2.0`,
         stack: ["Node.js", "EJS", "Express", "PostgreSQL", "Redis", "Docker"],
-        live: null,
-        repo: null
+        live: '',
+        repo: ''
     }
 ];
 
@@ -99,7 +99,8 @@ const dots = document.getElementById("carousel-dots"); // location to append car
 function makeCard(project) {
     const newCard = document.createElement("div");
     newCard.className = "card project-container";
-    newCard.id = project.title.toLowerCase();
+    let titleId = project.title.toLowerCase().replace(/\s+/g, '-');
+    newCard.id = titleId;
 
     newCard.innerHTML = `
         <div class="project-image-container">
@@ -134,7 +135,7 @@ function makeCard(project) {
                 </div>
             </div>
             <div class="button-container">
-                <a href="${project.live}" target="_blank" class="visit-site featured-button">
+                <a href="${project.live}" ${project.live ? 'target="_blank"' : ''} class="visit-site featured-button">
                     <span>
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
@@ -146,7 +147,7 @@ function makeCard(project) {
                     </span>
                     Visit Site
                 </a>
-                <a href="${project.repo}" target="_blank" class="view-code featured-button">
+                <a href="${project.repo}" ${project.repo ? 'target="_blank"' : ''} class="view-code featured-button">
                     <span>
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
