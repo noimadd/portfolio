@@ -25,13 +25,15 @@ menuLinks.forEach(link => {
 });
 
 // top nav functionality
+// hide top nav on scroll down
+// show on scroll up or near top
 let prevScrollpos = window.pageYOffset;
 const nav = document.querySelector('.top-nav');
 
 window.onscroll = function() {
     let currentScrollPos = window.pageYOffset;
 
-    if (currentScrollPos < 70) {
+    if (currentScrollPos < 100) {
         nav.classList.remove('hidden');
     } else if (prevScrollpos > currentScrollPos) {
         nav.classList.remove('hidden');
@@ -40,3 +42,6 @@ window.onscroll = function() {
     }
     prevScrollpos = currentScrollPos;
 }
+
+// side nav functionality
+const sideNav = document.querySelector('.off-screen-menu');
