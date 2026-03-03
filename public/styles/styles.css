@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -16,7 +17,7 @@
     --accent: oklch(0.72 0.0909 65.53);
     --buttons: oklch(0.4806 0.0581 196.98);
     --shadow: oklch(0.1088 0.0173 285.91);
-    --borders: oklch(0.635 0.0074 286.19);
+    --border: oklch(0.635 0.0074 286.19);
     --menu-bg: oklch(0.1878 0.0113 242.4);
 
     /* game things */
@@ -61,6 +62,15 @@ body {
 
 .main-layout {
     min-height: 100vh;
+}
+
+.section {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 80%;
+    margin: auto;
 }
 
 .section-gap {
@@ -142,4 +152,16 @@ body {
     border-radius: 4px;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.title {
+    font-size: 4rem;
+    color: var(--text);
+    line-height: 1.2;
+    max-width: 600px;
+}
+
+.title span {
+    color: var(--gilded-gold);
+    text-shadow: 0 0 3px var(--gilded-gold), 0 0 5px var(--gilded-gold);
 }

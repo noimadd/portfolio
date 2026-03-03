@@ -1,0 +1,555 @@
+#featured-section {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 500px) {
+    #featured-section {
+        width: 90%;
+    }
+}
+
+
+
+
+/* heading */
+.featured-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.featured-header > * {
+    flex: 1;
+}
+
+.featured-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-pretitle {
+    display: flex;
+    flex-direction: row;
+}
+
+.horizontal-line {
+    width: 40px;
+    height: 1px;
+    background-color: var(--gilded-gold);
+    margin: auto 10px;
+}
+
+#pretitle-featured {
+    color: var(--gilded-gold);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+
+}
+
+.featured-description-container {
+    margin-top: 2rem;
+}
+
+#featured-intro {
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+
+}
+
+.featured-description {
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.featured-description:first-child {
+    margin-bottom: 10rem;
+}
+
+@media (max-width: 1024px) {
+    .featured-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .featured-pretitle {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #title-featured {
+        font-size: 3rem;
+    }
+
+    .featured-description-container {
+        text-align: left;
+        margin-top: 1rem;
+    }
+}
+
+
+
+
+/* featured projects */
+.featured-projects {
+    margin-top: 150px;
+}
+
+.project-container { 
+    max-width: 700px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: 100%;
+}
+
+.project-image-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 42.857%; /* 21:9 aspect ratio */
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--gilded-gold);
+    border-radius: 8px;
+}
+
+.project-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+/* image text - bottom left */
+.project-title {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.project-title h2 {
+    font-size: 3rem;
+}
+
+.project-type {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-left: 10px;  
+}
+
+.project-type p {
+    font-size: 0.9rem;
+    color: var(--gilded-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* overview text */
+.overview-text {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* project stage - top right */
+.project-stage {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--bg-dark);
+    color: var(--gilded-gold);
+    border: 0.5px solid var(--gilded-gold);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* project version - top left */
+.project-version {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--gilded-gold);
+    color: var(--bg-dark);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+@media (max-width: 800px) {
+    .project-container {
+        gap: 1rem;
+    }
+
+    .project-title h2 {
+        font-size: 2rem;
+    }
+
+    .project-type p {
+        font-size: 0.8rem;
+    }
+
+    .overview-text {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .project-image-container {
+        border: none;
+    }
+
+    /* .project-image-container img {
+        display: none;
+    } */
+
+    .project-title h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .horizontal-line {
+        width: 20px;
+        margin: auto 0px;
+    }
+
+    .overview-text {
+        font-size: 0.65rem;
+    }
+}
+
+
+
+
+/* project description */
+.project-overview {
+    margin: 0 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* takes up remaining space */
+}
+
+.project-description {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom: 0.5px solid var(--bg);
+    padding-bottom: 1.5rem;
+    flex: 1; /* pushes buttons to bottom */
+}
+
+.project-description h3 {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+}
+
+.project-description-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-description-section p {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-left: 0.5rem;
+    line-height: 1.8;
+}
+
+.project-stack-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-stack-section ul {
+    column-count: 4;
+    column-gap: 1.25rem;
+    padding-left: 0;
+}
+
+@media (max-width: 800px) {
+    .project-stack-section ul {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 500px) {
+    .project-stack-section ul {
+        column-count: 2;
+    }
+}
+
+.project-stack-section li {
+    font-size: 0.9rem;
+    color: var(--gilded-gold);
+    background-color: var(--bg-dark);
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid var(--bg);
+    border-radius: 8px;
+    list-style-type: none;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+@media (max-width: 800px) {
+    .project-overview {
+        margin: 0;
+    }
+    
+    .project-description {
+        flex-direction: column;
+    }
+
+    
+    .project-stack-section {
+        border-left: none;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .project-description p {
+        font-size: 0.8rem;
+    }
+
+    .project-stack-section li {
+        font-size: 0.8rem;
+    }
+}
+
+
+/* button container */
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.featured-button {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.visit-site {
+    background: var(--gilded-gold);
+    color: var(--bg-dark);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.visit-site:hover {
+    background: var(--aged-parchment);
+    color: var(--bg-dark);
+}
+
+.view-code {
+    background: transparent;
+    color: var(--gilded-gold);
+    border: 2px solid var(--gilded-gold);
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.view-code:hover {
+    background: var(--gilded-gold);
+    color: var(--bg-dark);
+    border-color: var(--gilded-gold);   
+}
+
+.button-container a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.button-container a svg {
+    height: 1rem;
+    width: 1rem;
+    vertical-align: middle;
+}
+
+@media (max-width: 400px) {
+    .button-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .button-container a {
+        font-size: 0.75rem;
+    }
+}
+
+
+
+
+
+/* carousel stuff */
+.featured-projects {
+    width: 100%;
+    position: relative;
+    margin-top: 150px;
+    max-width: 1500px;
+    overflow: hidden;
+    /* Fade cards out toward edges */
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+    );
+}
+
+.carousel {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 850px;
+    gap: 20px;
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+    will-change: transform;
+    align-items: stretch; /* forces equal heights */
+}
+
+/* side card style */
+.carousel .card {
+    opacity: 0.5;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    min-width: 800px;
+}
+
+@media (max-width: 1024px) {
+    .carousel .card {
+        min-width: 600px;
+    }
+
+    .carousel {
+        min-height: 750px;
+    }
+}
+
+@media (max-width: 800px) {
+    .carousel .card {
+        min-width: 500px;
+    }
+
+    .carousel {
+        min-height: 700px;
+    }
+}
+
+@media (max-width: 650px) {
+    .carousel .card {
+        min-width: 90%;
+    }
+
+
+}
+
+@media (max-width: 500px) {
+    .carousel .card {
+        min-width: 95%;
+    }
+
+    .featured-projects {
+        mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 5%,
+            black 95%,
+            transparent 100%
+        );
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 5%,
+            black 95%,
+            transparent 100%
+        );
+    }
+}
+
+/* main card */
+.carousel .card.active {
+    opacity: 1;
+    transform: scale(1);
+    border: 2px solid var(--gilded-gold);
+    box-shadow: 0 0 20px var(--gilded-gold);
+}
+
+.carousel.animating {
+    transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel:active { cursor: grabbing; }
+
+@media (max-width: 800px) {
+    .carousel .card {
+    transition:
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        filter 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        z-index 0s linear 0s;
+    }
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.carousel-dot {
+    width: 28px;
+    height: 6px;
+    border-radius: 2px;
+    background: var(--bg);
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.carousel-dot.active {
+    background: var(--gilded-gold);
+    width: 45px;
+}
