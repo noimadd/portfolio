@@ -19,7 +19,7 @@ const featured_projects = [
         title: "Personal Portfolio",
         type: "Web Application",
         stage: "In Development",
-        version: "0.2.0",
+        version: "0.4.0",
         description:
            `This portfolio website is a personal project designed to showcase my skills, experience, and projects as a software developer.
             It also serves as a way for me to improve my design and frontend development skills,
