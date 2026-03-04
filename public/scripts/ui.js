@@ -16,7 +16,6 @@ menuLinks.forEach(link => {
 
         sideMenu.classList.remove('active');
         offScreenMenu.classList.remove('active');
-        charInfo.classList.remove('menu-open');
 
         setTimeout(() => {
             window.location.href = link.href;
@@ -30,7 +29,7 @@ menuLinks.forEach(link => {
 let prevScrollpos = window.pageYOffset;
 const nav = document.querySelector('.top-nav');
 
-window.onscroll = function() {
+window.addEventListener('scroll', () => {
     let currentScrollPos = window.pageYOffset;
 
     if (currentScrollPos < 100) {
@@ -41,7 +40,7 @@ window.onscroll = function() {
         nav.classList.add('hidden');
     }
     prevScrollpos = currentScrollPos;
-}
+});
 
 // side nav functionality
 // smooth close side nav on link click

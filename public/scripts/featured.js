@@ -135,7 +135,7 @@ function makeCard(project) {
                 </div>
             </div>
             <div class="button-container">
-                <a href="${project.live}" ${project.live ? 'target="_blank"' : ''} class="visit-site featured-button">
+                <a href="${project.live}" ${project.live ? 'target="_blank"' : ''} class="visit-site featured-button" aria-label="Visit ${project.title} Site">
                     <span>
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
@@ -147,7 +147,7 @@ function makeCard(project) {
                     </span>
                     Visit Site
                 </a>
-                <a href="${project.repo}" ${project.repo ? 'target="_blank"' : ''} class="view-code featured-button">
+                <a href="${project.repo}" ${project.repo ? 'target="_blank"' : ''} class="view-code featured-button" aria-label="View ${project.title} Code">
                     <span>
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
