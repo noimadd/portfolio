@@ -11,10 +11,17 @@
             <%- include('./partials/email') %>
 
             <div class="content">
-                <%- include('./sections/about') %>
+                <section id="character-sheet">
+                    <%- include('./sections/about') %>
+                </section>
                 <div class="section-gap"></div>
-                <%- include('./sections/featured') %>
+                <section id="quest-log">
+                    <%- include('./sections/featured') %>
+                </section>
                 <div class="section-gap"></div>
+                <section id="contact">
+                    <%- include('./sections/footer') %>     
+                </section>
             </div>
         </div>
         <script src="/scripts/ui.js"></script>

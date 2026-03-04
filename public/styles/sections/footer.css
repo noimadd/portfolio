@@ -1,0 +1,46 @@
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-line {
+    width: 80px;
+    background-color: var(--gilded-gold);
+}
+
+.footer-socials {
+    display: none;
+    gap: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-bottom {
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.footer-bottom a {
+    color: var(--gilded-gold);
+    text-decoration: none;
+}
+
+.footer-bottom:hover {
+    transform: scale(1.02);
+}
+
+.footer-bottom:hover a {
+    text-decoration: underline;
+    color: var(--gilded-gold);
+}
+
+@media (max-width: 1024px) {
+    .footer-socials {
+        display: flex;
+        justify-content: center;
+    }
+}
